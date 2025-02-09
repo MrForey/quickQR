@@ -1,0 +1,87 @@
+h1
+{
+    color: var(--title-text);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.non-result
+{
+    font-size: 30px;
+    color: var(--main-text);
+    text-align: center;
+    margin-top: 50px;
+}
+
+.log-block
+{
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    border: 2px var(--borders) solid;
+    border-radius: 10px;
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-block>.log-info
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.log-block>.log-info>p
+{
+    color: var(--main-text);
+}
+
+.log-block>.log-buttons>form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.download-button
+{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--button-color);
+    color: var(--button-color-text);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.danger
+{
+    color: var(--button-color-text);
+    transition: .3s;
+    cursor: pointer;
+    background-color: var(--button-color-danger);
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.danger:hover
+{
+    transition: .3s;
+    background-color: var(--button-color-danger-hover);
+}
+
+.download-button:hover
+{
+    transition: .3s;
+    background-color: var(--button-color-hover);
+}
+
+.log-block>img
+{
+    width: 100px;
+    height: auto;
+}

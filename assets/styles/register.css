@@ -1,0 +1,125 @@
+form
+{
+    margin-top: 2% !important;
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    border: 2px var(--borders) solid;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form>h1
+{
+    color: var(--title-text);
+    margin: 0 auto;
+}
+form>.input-group
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.password-toggle-icon 
+{
+    position: absolute;
+    top: 53%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+#toggle-icon1
+{
+    filter: invert(0%);
+    transition: filter 0.3s ease;
+}
+  
+.password-toggle-icon img 
+{
+    width: 20px;
+    height: auto;
+}
+
+form>.input-group>label
+{
+    color: var(--main-text);
+}
+
+form>.input-group>input
+{
+    color: var(--main-text);
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    padding-right:40px;
+    border-radius: 5px;
+    border: 1px var(--borders) solid;
+    transition: color .3s, border .3s, background-color .3s;
+    background-color: var(--bg-color);
+}
+
+form>.input-group>input::placeholder
+{
+    color: var(--main-text);
+}
+
+form>.input-group>input:focus-visible
+{
+    outline: 3px var(--borders) solid;
+}
+
+form>.input-group>span
+{
+    font-size: 12px;
+    color: var(--small-text);
+}
+
+form>button
+{
+    min-width: 70%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--button-color);
+    color: var(--button-color-text);
+    margin: 0 auto;
+    cursor: pointer;
+    transition: .3s;
+}
+
+form>button:hover
+{
+    transition: .3s;
+    background-color: var(--button-color-hover);
+}
+
+form>button:focus-visible
+{
+    transition: 0s;
+    outline: 3px var(--borders) solid;
+}
+
+.authText
+{
+    color: var(--main-text);
+    text-align: center;
+    margin-top: 2%;
+}
+
+.authText>a
+{
+    color: var(--links);
+}
+
+.authText>a:hover
+{
+    text-decoration: underline;
+}

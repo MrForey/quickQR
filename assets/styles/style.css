@@ -1,0 +1,360 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container
+{
+    height: auto;
+    margin: 0 auto;
+}
+
+.row
+{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 20px;
+}
+
+.col
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coder-menu
+{
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap; 
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.coder-menu>a
+{
+    color: var(--links);
+}
+
+.coder-menu>a:hover
+{
+    text-decoration: underline;
+}
+
+form
+{
+    width: max-content;
+    height: auto;
+}
+
+form>h1
+{
+    color: var(--title-text);
+}
+.input
+{
+    min-width: 100%;
+    max-width: inherit;
+    height: auto;
+    border-radius: 5px;
+    border: 2px var(--borders) solid;
+    padding: 5px;
+    color: var(--main-text);
+    resize: vertical;
+}
+
+.input:focus-visible
+{
+    outline: 3px var(--borders) solid;
+}
+
+.input::placeholder
+{
+    color: var(--main-text);
+}
+
+form>.inputs
+{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+}
+
+form>button
+{
+    background-color: var(--button-color);
+    color: var(--button-color-text);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.col:nth-child(2)
+{
+    gap: 20px;
+}
+
+.col:nth-child(2)>span
+{
+    color: var(--main-text);
+}
+
+.col:nth-child(2)>p
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 70%;
+    height: auto;
+    color: var(--main-text);
+}
+
+.col:nth-child(2)>p>span
+{
+    font-size: 20px;
+    color: var(--title-text);
+    font-weight: bold;
+}
+
+.col>.qrcodeblock
+{
+    padding: 20px;
+    border: 2px var(--borders) solid;
+    border-radius: 10px;
+    min-width: 10em;
+    min-height: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form>button:hover
+{
+    transition: .3s;
+    background-color: var(--button-color-hover);
+}
+
+#logform
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+form>.inputs>div
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form>.inputs>div>label
+{
+    color: var(--main-text);
+}
+form>.inputs>div>input,textarea,select
+{
+    width: 100%;
+    border-radius: 5px;
+    border: 2px var(--borders) solid;
+    padding: 5px;
+    color: var(--main-text);
+    background-color: var(--bg-color);
+    margin: 0 auto;
+    transition: color .3s, border .3s, background-color .3s;
+}
+
+form>.inputs>div>textarea
+{
+    resize: vertical;
+}
+
+form>.inputs>div>input::placeholder
+{
+    color: var(--main-text);
+}
+
+form>.inputs>div>input:focus-visible
+{
+    outline: 3px var(--borders) solid;
+}
+
+form>.inputs>div>textarea::placeholder
+{
+    color: var(--main-text);
+}
+
+form>.inputs>div>textarea:focus-visible
+{
+    outline: 3px var(--borders) solid;
+}
+
+.radio-group
+{
+    display: flex;
+    align-items: center;
+}
+
+.color-group
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-group>span
+{
+    color: var(--main-text);
+
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--borders);
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="radio"]:checked + .label::before {
+    background-color: var(--button-color);
+    border-color: var(--borders);
+    transform: scale(1.2);
+    box-shadow: 0 0 5px var(--button-color-hover);
+    transition: transform .3s, box-shadow .3s;
+}
+
+.label span {
+    font-size: 16px;
+    color: var(--main-text);
+}
+
+input[type="color"] {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 2px solid var(--borders);
+    border-radius: 50%;
+}
+
+input[type="color"]:hover::-webkit-color-swatch {
+    border-color: var(--button-color-hover);
+}
+
+input[type="color"]:focus {
+    outline: none;
+}
+
+input[type="color"]:focus::-webkit-color-swatch {
+    border-color: var(--button-color);
+}
+
+@media screen and (max-width: 767px) {
+    .row
+    {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto;
+    }
+
+}
+
+@media (min-width: 1400px) {
+    .container
+    {
+        width: 1320px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container
+    {
+        width: 1140px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container
+    {
+        width: 960px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container
+    {
+        width: 720px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container
+    {
+        width: 540px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container
+    {
+        width: 100%;
+    }
+
+    .col
+    {
+        margin-top: 20px;
+    }
+}
