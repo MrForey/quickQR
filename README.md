@@ -1,1 +1,2 @@
-# quickQR
+# quickQR - QR-Code Generator
+
