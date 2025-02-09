@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 31 2025 г., 08:13
+-- Время создания: Фев 09 2025 г., 13:23
 -- Версия сервера: 10.8.4-MariaDB-log
 -- Версия PHP: 8.1.9
 
@@ -54,7 +54,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `date`) VALUES
-(1, 'qweqwe', 'qweqwe', '2025-01-24');
+(1, 'MrForey', '$2y$10$ugBHTVlMDR3nWucm9g9ZOOe3w.ZPOyDuMq3W8p9zqmBQPDtdbPDE2', '2025-02-09');
 
 --
 -- Индексы сохранённых таблиц
@@ -81,7 +81,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `qrlogs`
 --
 ALTER TABLE `qrlogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

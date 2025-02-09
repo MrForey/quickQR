@@ -194,7 +194,6 @@
         </nav>
         <div class="row">
             <div class="col">
-                
                 <form action="/controllers/func/add_qrcode_log.php" method="post" id="logForm" enctype="multipart/form-data">
                     <input type="hidden" name="target" value="<?php if(isset($_GET['target'])){echo $_GET['target'];} ?>">
                     <h1><?= $coder['h1'] ?></h1>
