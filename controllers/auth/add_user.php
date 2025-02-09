@@ -14,13 +14,15 @@
                 {
                     if($_POST['password'] == $_POST['repeatpassword'])
                     {
+                        $pass = $_POST['password'];
+                        $passhash = password_hash($pass, PASSWORD_BCRYPT);
                         $conn -> query("
                         INSERT INTO `users`(
                         `login`, 
                         `password`
                         ) VALUES (
                          '{$_POST['login']}',
-                         '{$_POST['password']}'
+                         '$passhash'
                          )
                         ");
                         header("Location: ../../login.php");
