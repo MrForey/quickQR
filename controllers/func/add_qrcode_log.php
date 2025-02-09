@@ -167,6 +167,29 @@
                     )
                 ");
             }
+            elseif($target == 'bank')
+            {
+                $img = $_FILES['qr_image'];
+
+                $uploadDir = '../../assets/images/uploads/';
+
+                $randomFileName = 'qr_' . uniqid('', true) . '_' . mt_rand(1000, 9999) . '.png';
+                $uploadFile = $uploadDir . $randomFileName;
+                move_uploaded_file($img['tmp_name'], $uploadFile);
+                $conn->query("
+                    INSERT INTO `qrlogs`(
+                    `size`, 
+                    `type`, 
+                    `qrcode`, 
+                    `user_id`
+                    ) VALUES (
+                    '{$_POST['radioSize']}',
+                    'bank',
+                    '{$randomFileName}',
+                    '{$_SESSION['user']['id']}'
+                    )
+                ");
+            }
         }
         else
         {

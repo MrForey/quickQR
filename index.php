@@ -130,6 +130,37 @@
                 </div>'
             );
         }
+        elseif($_GET['target'] == 'bank')
+        {
+            $coder = array(
+                "h1" => "Оплата по счету в виде QR-Кода",
+                "input" => '
+                <div id="bank">
+                <label for="bankName">ФИО получателя</label>
+                <input type="text" id="bankName" name="bankName" placeholder="Введите ФИО получателя..." required>
+                </div>
+                <div>
+                <label for="bankNumber">Номер счета получателя</label>
+                <input type="text" id="bankNumber" name="bankNumber" placeholder="Введите нормер счета получателя..." required>
+                </div>
+                <div>
+                <label for="bankBank">Банк</label>
+                <select id="bankBank" name="bankBank">
+                    <option value="tbank">Т-Банк (Тинькофф)</option>
+                    <option value="sber">Сбербанк</option>
+                    <option value="vtb">ВТБ</option>
+                </select>
+                </div>
+                <div>
+                <label for="bankSum">Сумма в рублях</label>
+                <input type="number" id="bankSum" name="bankSum" placeholder="Введите сумму платежа..." required>
+                </div>
+                <div>
+                <label for="bankPurpose">Назначение платежа</label>
+                <textarea id="bankPurpose" name="bankPurpose" placeholder="Введите назначение платежа..." required></textarea>
+                </div>'
+            );
+        }
     }
     else
     {
@@ -150,18 +181,20 @@
 </head>
 <body>
     <div class="container" style="flex:1;">
+        <nav class="coder-menu">
+            <a href="/index.php">Обычный текст</a>
+            <a href="/index.php?target=link">Ссылка на сайт</a>
+            <a href="/index.php?target=card">Визитная карточка</a>
+            <a href="/index.php?target=sms">SMS-сообщение</a>
+            <a href="/index.php?target=wifi">Подключение к WIFI</a>
+            <a href="/index.php?target=gps">Местоположение на карте</a>
+            <a href="/index.php?target=email">E-Mail сообщение</a>
+            <a href="/index.php?target=event">Мероприятие</a>
+            <a href="/index.php?target=bank">Оплата по счету</a>
+        </nav>
         <div class="row">
             <div class="col">
-                <nav class="coder-menu">
-                    <a href="/index.php">Обычный текст</a>
-                    <a href="/index.php?target=link">Ссылка на сайт</a>
-                    <a href="/index.php?target=card">Визитная карточка</a>
-                    <a href="/index.php?target=sms">SMS-сообщение</a>
-                    <a href="/index.php?target=wifi">Подключение к WIFI</a>
-                    <a href="/index.php?target=gps">Местоположение на карте</a>
-                    <a href="/index.php?target=email">E-Mail сообщение</a>
-                    <a href="/index.php?target=event">Мероприятие</a>
-                </nav>
+                
                 <form action="/controllers/func/add_qrcode_log.php" method="post" id="logForm" enctype="multipart/form-data">
                     <input type="hidden" name="target" value="<?php if(isset($_GET['target'])){echo $_GET['target'];} ?>">
                     <h1><?= $coder['h1'] ?></h1>
@@ -169,17 +202,14 @@
                         <?= $coder['input'] ?>
                     </div>
                     <button id="generateBtn">Сгенерировать QR-код</button>
-                    <div class="radio-group">
-                        <span class="main-texts">Размер QR-кода: </span>
-                        <input type="radio" name="radioSize" id="size50" value="50" />
-                        <label for="size50" class="main-texts label"><span>50х50</span></label>
-                        <input type="radio" name="radioSize" id="size80" value="80" />
-                        <label for="size80" class="main-texts label"><span>80х80</span></label>
-                        <input type="radio" name="radioSize" id="size120" value="120" checked />
-                        <label for="size120" class="main-texts label"><span>120х120</span></label>
-                        <input type="radio" name="radioSize" id="size200" value="200" />
-                        <label for="size200" class="main-texts label"><span>200х200</span></label>
+                    <span class="main-texts">Размер QR-кода: </span>
+                    <div>
+                        <span class="main-texts">50x50</span>
+                        <input type="range" name="radioSize" id="radioSize" value="120" min="50" max="1000" oninput="changeSize()">
+                        <span class="main-texts">1000x1000</span>
                     </div>
+                    <p class="main-texts" id="container">120х120</p>
+                    
                     <div class="color-group">
                         <p class="main-texts">Фон QR-Кода <input type="color" name="qrColorBG" id="qrColorBG" value="#ffffff"></p>
                         <p class="main-texts">Элементы QR-Кода <input type="color" name="qrColorEL" id="qrColorEL" value="#000000"></p>
@@ -204,6 +234,15 @@
     <script src="/assets/scripts/jquery-3.7.1.min.js"></script>
     <script src="/assets/scripts/jquery.maskedinput.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+        function changeSize () 
+        { 
+            const range = document.getElementById('radioSize').value;
+            const container = document.getElementById('container');
+            container.innerHTML = range + "x" + range;
+        }
+
+    </script>
     <script>
         $.mask.definitions['h']='[A-Za-z0-9]';
         $(".mask-phone-card").mask("+7 (999) 999-99-99");
@@ -233,6 +272,7 @@
             const locationField = document.getElementById('location');
             const emailField = document.getElementById('email');
             const eventField = document.getElementById('event');
+            const bankField = document.getElementById('bank');
 
             if (smsField && smsField.value !== "") {
                 const phone = document.getElementById('sms_phone')?.value || '';
@@ -325,19 +365,48 @@ END:VEVENT
 END:VCALENDAR
             `;
                 }
+                else if (bankField && bankField.value !== "")
+                {
+                    const name = document.getElementById('bankName').value.trim();
+                    const account = document.getElementById('bankNumber').value.trim();
+                    const bank = document.getElementById('bankBank').value;
+                    const sum = document.getElementById('bankSum').value.trim();
+                    const purpose = document.getElementById('bankPurpose').value.trim();
+
+                    if (!name || !account || !sum || !purpose) {
+                        console.log('Пожалуйста, заполните все поля!');
+                        return;
+                    }
+                    else
+                    {
+                        if(bank == "tbank")
+                        {
+                            var bankname = "АО Тинькофф Банк";
+                            var bic = "044525974";
+                            var corresp = "30101810145250000974";
+                        }
+                        else if(bank == "sber")
+                        {
+                            var bankname = "ПАО Сбербанк";
+                            var bic = "044525225";
+                            var corresp = "30101810400000000225";
+                        }
+                        else if (bank == "vtb")
+                        {
+                            var bankname = "ВТБ";
+                            var bic = "044525745";
+                            var corresp = "30101810345250000745";
+                        }
+                    }
+                    data = `ST00012|Name=${name}|PersonalAcc=${account}|BankName=${bankname}|BIC=${bic}|CorrespAcc=${corresp}|Sum=${sum * 100}|Purpose=${purpose}`
+                }
                 else {
                     console.log("Пожалуйста, заполните хотя бы одно поле!");
                     return;
                 }
 
-            const radios = document.getElementsByName('radioSize');
-            let size;
-            for (const radio of radios) {
-                if (radio.checked) {
-                    size = parseInt(radio.value, 10);
-                    break;
-                }
-            }
+            const size = parseInt(document.getElementById('radioSize').value, 10);
+
             const qrCodeBG = document.getElementById('qrColorBG').value || "#ffffff";
             const qrCodeEl = document.getElementById('qrColorEL').value || "#000000";
 

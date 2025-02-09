@@ -40,7 +40,7 @@
             <?php foreach($logs as $key => $log): ?>
                 <div class="log-block">
                     <div class="log-info">
-                        <p>Тип: <?php if($log['type'] == 'text'){echo "Простой текст";}elseif($log['type'] == 'link'){echo "Ссылка на сайт";}elseif($log['type'] == 'card'){echo "Визитная карточка";}elseif($log['type'] == 'sms'){echo "SMS-сообщение";}elseif($log['type'] == 'wifi'){echo "Подключение к WIFI";}elseif($log['type'] == 'gps'){echo "Местоположение на карте";}elseif($log['type'] == 'email'){echo "E-Mail сообщение";}elseif($log['type'] == 'event'){echo "Мероприятие";} ?></p>
+                        <p>Тип: <?php if($log['type'] == 'text'){echo "Простой текст";}elseif($log['type'] == 'link'){echo "Ссылка на сайт";}elseif($log['type'] == 'card'){echo "Визитная карточка";}elseif($log['type'] == 'sms'){echo "SMS-сообщение";}elseif($log['type'] == 'wifi'){echo "Подключение к WIFI";}elseif($log['type'] == 'gps'){echo "Местоположение на карте";}elseif($log['type'] == 'email'){echo "E-Mail сообщение";}elseif($log['type'] == 'event'){echo "Мероприятие";}elseif($log['type'] == 'bank'){echo "Оплата по счету";} ?></p>
                         <p>Размер: <?= $log['size'] ?>x<?= $log['size'] ?></p>
                         <p>Дата создания: <?= $log['day'] ?>.<?= $log['month'] ?>.<?= $log['year'] ?></p>
                         <p>Время создания: <?= $log['time'] ?></p>

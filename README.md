@@ -1,2 +1,1 @@
 # quickQR - QR-Code Generator
-

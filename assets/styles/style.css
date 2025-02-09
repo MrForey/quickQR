@@ -47,17 +47,22 @@ body {
     padding: 10px;
     display: flex;
     gap: 10px;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .coder-menu>a
 {
+    background-color: transparent;
+    padding: 5px;
     color: var(--links);
+    transition: .3s;
 }
 
 .coder-menu>a:hover
 {
-    text-decoration: underline;
+    background-color: var(--button-color);
+    color: var(--main-text);
+    transition: .3s;
 }
 
 form
@@ -145,10 +150,22 @@ form>button
     border: 2px var(--borders) solid;
     border-radius: 10px;
     min-width: 10em;
+    max-width: 500px;
     min-height: 10em;
+    max-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
+}
+
+.col>.qrcodeblock>#qrcode>canvas
+{
+    min-width: 10em;
+    max-width: 300px;
+    min-height: 10em;
+    max-height: 300px;
+    object-fit: cover;
 }
 
 form>button:hover
@@ -187,11 +204,23 @@ form>.inputs>div>input,textarea,select
     background-color: var(--bg-color);
     margin: 0 auto;
     transition: color .3s, border .3s, background-color .3s;
+    -moz-appearance: textfield;
 }
 
 form>.inputs>div>textarea
 {
     resize: vertical;
+}
+
+form>.inputs>div>input::-webkit-inner-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+form>.inputs>div>input::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 form>.inputs>div>input::placeholder
